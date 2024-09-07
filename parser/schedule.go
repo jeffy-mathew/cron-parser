@@ -90,6 +90,11 @@ func (s *Schedule) DaysOfWeek() []int {
 	return s.DaysOfWeekField.Vals()
 }
 
+// Cmd returns the command.
+func (s *Schedule) Cmd() string {
+	return s.Command
+}
+
 // NewSchedule creates a new Schedule with all boundaries initialized.
 func NewSchedule() Schedule {
 	return Schedule{
