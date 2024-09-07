@@ -4,7 +4,7 @@ tasks:
   go:install:
     desc: Install the cron-parser binary
     cmds:
-      - go install github.com/jeffy-mathew/cron-parser/cmd/cron-parser@latest
+      - go install github.com/jeffy-mathew/cron-parser@latest
 
   go:build:
     desc: Build the cron-parser binary from source

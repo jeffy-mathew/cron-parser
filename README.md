@@ -17,7 +17,7 @@ Alternatively you can use [Docker container](#docker-usage) to run the applicati
 To run the application with Go installed, run:
 
 ```
-go install github.com/jeffy-mathew/cron-parser/cmd/cron-parser@latest
+go install github.com/jeffy-mathew/cron-parser@latest
 ```
 
 Or clone the repository and run (assumes $GOPATH/bin is in your $PATH):
@@ -73,7 +73,7 @@ command       /usr/bin/echo hello
 
 ### Project Structure
 
-- `cmd/main.go`: Entry point of the application
+- `main.go`: Entry point of the application
 - `parser/`: Contains the cron expression parsing logic, this can be used as a library in other projects.
 - `internal/output/`: Handles the formatting and printing of the schedule
 - `internal/output/testdata/`: Contains golden files for output testing
