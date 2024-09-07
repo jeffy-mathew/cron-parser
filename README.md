@@ -17,12 +17,13 @@ Alternatively you can use [Docker container](#docker-usage) to run the applicati
 To run the application with Go installed, run:
 
 ```
-go install github.com/jeffy-mathew/cron-parser@latest
+go install github.com/jeffy-mathew/cron-parser@v1.0.0
 ```
 
 Or clone the repository and run (assumes $GOPATH/bin is in your $PATH):
 
 ```
+go mod tidy
 go build -o cron-parser ./cmd/main.go
 cp cron-parser $GOPATH/bin/
 ```
