@@ -1,0 +1,60 @@
+version: '3'
+
+tasks:
+  go:install:
+    desc: Install the cron-parser binary
+    cmds:
+      - go install github.com/jeffy-mathew/cron-parser
+
+  go:build:
+    desc: Build the cron-parser binary from source
+    cmds:
+      - go build -o cron-parser ./cmd/main.go
+
+  go:run:
+    desc: Run the cron-parser with the given expression using go run
+    cmds:
+      - go run ./cmd/main.go {{.CLI_ARGS}}
+
+  run:
+    desc: Build cron-parser from sourceand run the cron-parser with the given expression
+    deps:
+      - go:build
+    cmds:
+      - ./cron-parser {{.CLI_ARGS}}
+
+  docker:build:
+    desc: Build the Docker image
+    cmds:
+      - docker build -t cron-parser .
+
+  docker:run:
+    desc: Run the cron-parser in a Docker container
+    cmds:
+      - docker run --rm cron-parser {{.CLI_ARGS}}
+
+  docker:
+    desc: Build and run the cron-parser in a Docker container
+    cmds:
+      - task: docker:build
+      - task: docker:run
+        vars: 
+          CLI_ARGS: '{{.CLI_ARGS}}'
+
+  test:
+    desc: Run all tests
+    cmds:
+      - go test ./...
+
+  test:cover:
+    desc: Run all tests and generate coverage report
+    cmds:
+      - go test ./... -coverprofile=coverage.out
+      - go tool cover -html=coverage.out
+
+  test:update-golden:
+    desc: Update golden files for output testing
+    cmds:
+      - go test ./internal/output -update
+  
+  
