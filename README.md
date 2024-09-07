@@ -17,7 +17,7 @@ Alternatively you can use [Docker container](#docker-usage) to run the applicati
 To run the application with Go installed, run:
 
 ```
-go install github.com/jeffy-mathew/cron-parser
+go install github.com/jeffy-mathew/cron-parser/cmd/cron-parser@latest
 ```
 
 Or clone the repository and run (assumes $GOPATH/bin is in your $PATH):
