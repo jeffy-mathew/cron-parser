@@ -19,4 +19,5 @@ type Schedule struct {
 	DaysOfMonthField Field
 	MonthsField      Field
 	DaysOfWeekField  Field
+	Command          string
 }
