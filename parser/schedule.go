@@ -5,11 +5,16 @@ import (
 )
 
 var (
-	MinutesBound    = Bound{LowerBound: 0, UpperBound: 59}
-	HoursBound      = Bound{LowerBound: 0, UpperBound: 23}
+	// MinutesBound is the bound for the minutes field.
+	MinutesBound = Bound{LowerBound: 0, UpperBound: 59}
+	// HoursBound is the bound for the hours field.
+	HoursBound = Bound{LowerBound: 0, UpperBound: 23}
+	// DaysOfMonthBound is the bound for the days of month field.
 	DayOfMonthBound = Bound{LowerBound: 1, UpperBound: 31}
-	MonthsBound     = Bound{LowerBound: 1, UpperBound: 12}
-	DayOfWeekBound  = Bound{LowerBound: 0, UpperBound: 6}
+	// MonthsBound is the bound for the months field.
+	MonthsBound = Bound{LowerBound: 1, UpperBound: 12}
+	// DayOfWeekBound is the bound for the days of week field.
+	DayOfWeekBound = Bound{LowerBound: 0, UpperBound: 6}
 )
 
 // Bound is a struct that holds the lower and upper bounds.
@@ -50,7 +55,6 @@ func (c *Field) SetValues(values []int) error {
 	return nil
 }
 
-
 // Schedule is a struct that holds the cron schedule.
 type Schedule struct {
 	MinutesField     Field
@@ -59,6 +63,31 @@ type Schedule struct {
 	MonthsField      Field
 	DaysOfWeekField  Field
 	Command          string
+}
+
+// Minutes returns the minutes field.
+func (s *Schedule) Minutes() []int {
+	return s.MinutesField.Vals()
+}
+
+// Hours returns the hours field.
+func (s *Schedule) Hours() []int {
+	return s.HoursField.Vals()
+}
+
+// DaysOfMonth returns the days of month field.
+func (s *Schedule) DaysOfMonth() []int {
+	return s.DaysOfMonthField.Vals()
+}
+
+// Months returns the months field.
+func (s *Schedule) Months() []int {
+	return s.MonthsField.Vals()
+}
+
+// DaysOfWeek returns the days of week field.
+func (s *Schedule) DaysOfWeek() []int {
+	return s.DaysOfWeekField.Vals()
 }
 
 // NewSchedule creates a new Schedule with all boundaries initialized.
